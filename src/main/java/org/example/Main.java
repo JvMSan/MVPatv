@@ -1,23 +1,31 @@
 package org.example;
 
+import org.example.logging.FileLogger;
+import org.example.logging.LogAdapter;
+import org.example.model.EstacaoClimatica;
+import org.example.presenter.ClimaPresenter;
+import org.example.view.EstatisticaClimaView;
+import org.example.view.MaximasMinimasView;
+import org.example.view.PainelClimaView;
+
 import java.time.LocalDate;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        EstacaoClimatica estacaoClimatica = new EstacaoClimatica();
-        Painel painelClimaObserver = new PainelClimaObserver();
-        Painel estatisticaClimaObserver = new EstatisticaClimaObserver();
-        Painel maximasMinimasObserver = new MaximasMinimasObserver();
+        LogAdapter logAdapter = new LogAdapter(new FileLogger("log.txt"));
 
-        estacaoClimatica.registrarPainel(painelClimaObserver);
-        estacaoClimatica.registrarPainel(estatisticaClimaObserver);
-        estacaoClimatica.registrarPainel(maximasMinimasObserver);
+        EstacaoClimatica model =  new EstacaoClimatica(logAdapter);
 
-        estacaoClimatica.atualizarMedicoes(25.5f, 65f, 1013.1f, LocalDate.of(2023, 5, 1));
-        estacaoClimatica.atualizarMedicoes(26.0f, 68f, 1012.5f, LocalDate.of(2023, 5, 2));
-        estacaoClimatica.atualizarMedicoes(24.0f, 60f, 1015.5f, LocalDate.of(2023, 5, 3));
+        EstatisticaClimaView estatisticaView = new EstatisticaClimaView();
+        MaximasMinimasView maxiMinView = new MaximasMinimasView();
+        PainelClimaView painelView = new PainelClimaView();
+
+        ClimaPresenter presenter = new ClimaPresenter(model, estatisticaView, maxiMinView, painelView);
+
+        presenter.adicionarDado(25.5f, 60.0f, 1013.0f, LocalDate.now());
+        presenter.adicionarDado(27.8f, 65.0f, 1010.0f, LocalDate.now());
 
     }
 }
