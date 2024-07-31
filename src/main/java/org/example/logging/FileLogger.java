@@ -14,10 +14,12 @@ public class FileLogger implements Logger {
 
     @Override
     public void logOperacao(String operacao) {
-        try(FileWriter writer = new FileWriter(filePath,true)){
+        try (FileWriter writer = new FileWriter(filePath, true)) {
             LocalDateTime agora = LocalDateTime.now();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-        }catch(IOException e){
+            String formattedDate = agora.format(formatter);
+            writer.write(formattedDate + " - " + operacao + "\n");
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
