@@ -6,9 +6,9 @@ public class DadoClima {
     private float temperatura;
     private float umidade;
     private float pressao;
-    private LocalDate data;
+    private String data;
 
-    public DadoClima(float temperatura, float umidade, float pressao, LocalDate data) {
+    public DadoClima(float temperatura, float umidade, float pressao, String data) {
         this.temperatura = temperatura;
         this.umidade = umidade;
         this.pressao = pressao;
@@ -19,7 +19,7 @@ public class DadoClima {
         return temperatura;
     }
 
-    public LocalDate getData() {
+    public String getData() {
         return data;
     }
 

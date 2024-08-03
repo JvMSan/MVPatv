@@ -18,6 +18,7 @@ public class AttTempo extends JFrame {
         setContentPane(AttTempo);
         setTitle("última atualização do tempo");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setAlwaysOnTop(true);
 
         setBounds(600, 650, 500, 300);
         setVisible(true);

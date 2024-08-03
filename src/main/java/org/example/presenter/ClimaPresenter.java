@@ -13,17 +13,17 @@ public class ClimaPresenter {
     private EstacaoClimatica model;
     private EstatisticaClimaView estatisticaView;
     private MaximasMinimasView maxMinView;
-    private PainelClimaView painelView;
+//    private PainelClimaView painelView;
 
-    public ClimaPresenter(EstacaoClimatica model, EstatisticaClimaView estatisticaView, MaximasMinimasView maxMinView, PainelClimaView painelView) {
+    public ClimaPresenter(EstacaoClimatica model, EstatisticaClimaView estatisticaView, MaximasMinimasView maxMinView) {
         this.model = model;
         this.estatisticaView = estatisticaView;
         this.maxMinView = maxMinView;
-        this.painelView = painelView;
+//        this.painelView = painelView;
 
         this.model.adicionarObserver(estatisticaView);
         this.model.adicionarObserver(maxMinView);
-        this.model.adicionarObserver(painelView);
+//        this.model.adicionarObserver(painelView);
 
     }
 

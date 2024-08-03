@@ -7,21 +7,13 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EstatisticaClimaView extends JFrame implements Observer {
+public class EstatisticaClimaView  implements Observer {
     private List<DadoClima> dadosClima;
     private JTextArea estatisticaClima;
 
     public EstatisticaClimaView() {
-        setTitle("Estatisticas Climaticas");
-        setSize(400, 300);
-        setLayout(new BorderLayout());
-
         dadosClima = new ArrayList<>();
         estatisticaClima = new JTextArea();
-        add(new JScrollPane(estatisticaClima), BorderLayout.CENTER);
-
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);
     }
 
     @Override

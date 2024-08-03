@@ -7,21 +7,14 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MaximasMinimasView extends JFrame implements Observer {
+public class MaximasMinimasView implements Observer {
     private List<DadoClima> dadosClima;
     private JTextArea maxMinArea;
 
     public MaximasMinimasView() {
-        setTitle("Máximas e Mínimas Climáticas");
-        setSize(400, 300);
-        setLayout(new BorderLayout());
-
         dadosClima = new ArrayList<>();
         maxMinArea = new JTextArea();
-        add(new JScrollPane(maxMinArea), BorderLayout.CENTER);
 
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);
     }
     @Override
     public void atualizar(List<DadoClima> dados) {

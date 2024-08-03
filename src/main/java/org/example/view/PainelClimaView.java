@@ -7,19 +7,11 @@ import java.awt.*;
 import java.time.LocalDate;
 import java.util.List;
 
-public class PainelClimaView extends JFrame implements Observer {
+public class PainelClimaView implements Observer {
     private JTextArea painelArea;
 
     public PainelClimaView(){
-        setTitle("Painel Climatico");
-        setSize(400,300);
-        setLayout(new BorderLayout());
-
         painelArea = new JTextArea();
-        add(new JScrollPane(painelArea), BorderLayout.CENTER);
-
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);
     }
 
     @Override

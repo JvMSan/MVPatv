@@ -1,10 +1,23 @@
 package org.example;
 
+
+import org.example.logging.JsonFileLogger;
+import org.example.logging.Logger;
+import org.example.logging.XmlFileLogger;
+import org.example.model.EstacaoClimatica;
+import org.example.presenter.ClimaPresenter;
+import org.example.view.EstatisticaClimaView;
+import org.example.view.MaximasMinimasView;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class MainPainel extends JFrame {
     private JPanel MainPanel;
+    private String logFormat;
+
+
+
 
     public MainPainel(){
         setContentPane(MainPanel);
@@ -13,7 +26,7 @@ public class MainPainel extends JFrame {
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         setSize(screenSize.width, screenSize.height);
-
+        setAlwaysOnTop(false);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
 
 
@@ -45,7 +58,21 @@ public class MainPainel extends JFrame {
     }
 
     public static void main(String[] args) {
+        Logger jsonLogger = new JsonFileLogger("log.json");
+        Logger xmlLogger = new XmlFileLogger("log.xml");
+
+        EstacaoClimatica model =  new EstacaoClimatica();
+
+        EstatisticaClimaView estatisticaView = new EstatisticaClimaView();
+        MaximasMinimasView maxiMinView = new MaximasMinimasView();
+
+        ClimaPresenter presenter = new ClimaPresenter(model, estatisticaView, maxiMinView);
+
         new MainPainel();
+        new TelaLog();
+        new Telaincluirdados(presenter);
+        new DadosMedios();
+        new AttTempo();
 
     }
 }
